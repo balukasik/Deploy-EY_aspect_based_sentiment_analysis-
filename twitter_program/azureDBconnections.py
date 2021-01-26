@@ -2,7 +2,6 @@ import pyodbc
 from twitter_program import credentials
 from twitter_program import zamianaZnakow as zz
 
-
 def select(table):
     table = zz.odkoduj(table)
     select = "SELECT * FROM " + table
@@ -11,17 +10,19 @@ def select(table):
     username = credentials.username
     password = credentials.password
     driver = credentials.driver
-
-    with pyodbc.connect(
-            'DRIVER=' + driver + ';SERVER=' + server + ';PORT=1433;DATABASE=' + database + ';UID=' + username + ';PWD=' + password) as conn:
-        with conn.cursor() as cursor:
-            cursor.execute(select)
-            lista = []
-            row = cursor.fetchone()
-            while row:
-                lista.append(row)
+    try:
+        with pyodbc.connect(
+                'DRIVER=' + driver + ';SERVER=' + server + ';PORT=1433;DATABASE=' + database + ';UID=' + username + ';PWD=' + password) as conn:
+            with conn.cursor() as cursor:
+                cursor.execute(select)
+                lista = []
                 row = cursor.fetchone()
-            return lista
+                while row:
+                    lista.append(row)
+                    row = cursor.fetchone()
+                return lista
+    except:
+        print(query)
 
 
 def query(query):

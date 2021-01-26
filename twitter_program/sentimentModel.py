@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import http.client, urllib.request, urllib.parse, urllib.error, base64
-from twitter_program import credentials
+import credentials
 import json
 
 

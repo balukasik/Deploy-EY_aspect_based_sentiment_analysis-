@@ -1,6 +1,6 @@
 import pyodbc
-from twitter_program import credentials
-from twitter_program import zamianaZnakow as zz
+import credentials
+import zamianaZnakow as zz
 
 def select(table):
     table = zz.odkoduj(table)

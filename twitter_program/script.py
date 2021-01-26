@@ -1,9 +1,9 @@
 import datetime
 import calendar
 from twython import Twython
-from twitter_program import credentials
-from twitter_program import sentimentModel
-from twitter_program import azureDBconnections
+import credentials
+import sentimentModel
+import azureDBconnections
 
 
 def min(s, low):
